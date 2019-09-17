@@ -14,8 +14,7 @@ namespace Calculator.Tests
         [TestMethod()]
         public void GetSubjectTest()
         {
-            Program.GetSubject(5);
-            Assert.IsTrue(fil);
+            Assert.IsNotNull(System.IO.File.ReadAllText(Program.path));
         }
     }
 }

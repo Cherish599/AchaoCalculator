@@ -10,6 +10,7 @@ namespace Calculator
 {
     public class Program
     {
+        public static string path = @"E:\Subjects.txt";
         static void Main(string[] args)
         {
             int n;
@@ -19,8 +20,7 @@ namespace Calculator
         }
         //将n个算式写入E:\Subjects.txt
         static public void GetSubject(int n)
-        {
-            string path = @"E:\Subjects.txt";
+        { 
             StreamWriter sw = new StreamWriter(path);
             Random rdm = new Random();
             int[] num = new int[4];
@@ -31,7 +31,7 @@ namespace Calculator
                 num[cnum] = rdm.Next(101);
                 double  resultTest = num[0];     //用于检查结果是否为整数
                 long result = num[0];
-                string subject = num[0].ToString();  //算式的字符串
+                string subject = num[0].ToString();  //代表算式的字符串
                 for (int m = 0; m < cnum; m++)
                 {    
                     num[m] = rdm.Next(101);
