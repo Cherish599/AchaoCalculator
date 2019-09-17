@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 using System.IO;
+using System.Threading;
 
 namespace Calculator
 {
@@ -15,6 +16,7 @@ namespace Calculator
         {
             Random random = new Random();
             string result = null;
+
             int number = random.Next(0, 101);//产生随机数
             int opnumber = random.Next(2, 4);//产生随机运算符个数
             char[] Operator = { '+', '-', '*', '/' };
@@ -22,6 +24,7 @@ namespace Calculator
 
             for (int i = 1; i <= opnumber; i++)
             {
+                Thread.Sleep(300);
                 number = random.Next(0, 101);//产生随机数
                 int op = random.Next(0, 4);//产生随机运算符
                 result = result + Operator[op] + number;
@@ -47,9 +50,11 @@ namespace Calculator
 
             try
             {
-                StreamWriter writer = new StreamWriter(@"C:\Users\asus\Desktop\git\AchaoCalculator\1311072374\四则运算.txt");
-                writer.Write(fml);
-                writer.Close();
+                string fileName = @"C:\Users\asus\Desktop\git\AchaoCalculator\1311072374\四则运算.txt";
+                StreamWriter sw = new StreamWriter(fileName,true);
+                sw.WriteLine(fml);
+                sw.Flush();
+                sw.Close();
                 Console.WriteLine("随机成功！！！");
                 return 1;
             }
@@ -66,10 +71,11 @@ namespace Calculator
 
         Console.WriteLine("请输入练习题个数：");
         n = int.Parse(Console.ReadLine());
-        for (int i = 1; i <= n; i++)
-        {
-                Program.Write(Panduan(Suijiyunsuan()));
+            for ( int i = 1; i <= n; i++)
+            {
+                Program.Write(Panduan(Suijiyunsuan()));//调用函数
+
+            }
         }
-     }
     }
 }
