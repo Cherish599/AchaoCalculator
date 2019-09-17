@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
+using System.Diagnostics;
 /// <summary>
 /// 四则运算计算器
 /// 
@@ -47,12 +49,35 @@ namespace Calculator
 
         public static void Main(string[] args)
         {
-            Result result = formulaMaker();
-            Console.WriteLine("formula:" + result.infixFormula);
-            Queue<string> postfixStack = changeToPostfix(result.FormulaQueue);
-            int res = calculate(postfixStack);
-            Console.WriteLine("result:" + res);
-            Console.ReadLine();
+            //Result result = formulaMaker();
+            //Console.WriteLine("formula:" + result.infixFormula);
+            //Queue<string> postfixStack = changeToPostfix(result.FormulaQueue);
+            //int res = calculate(postfixStack);
+            //Console.WriteLine("result:" + res);
+            //Console.ReadLine();
+            printToFile();
+        }
+
+        public static void printToFile()
+        {
+            int i = 1000, k = 1;
+            string pathProblem = "E:\\Problem.txt", pathAnswer = "E:\\Answer.txt";
+            FileStream f1 = new FileStream(pathProblem, FileMode.Create, FileAccess.ReadWrite);
+            FileStream f2 = new FileStream(pathAnswer, FileMode.Create, FileAccess.ReadWrite);
+            StreamWriter sw1 = new StreamWriter(f1);
+            StreamWriter sw2 = new StreamWriter(f2);
+            while (i-- > 0)
+            {
+                Result result = formulaMaker();
+                Queue<string> queue = changeToPostfix(result.formulaQueue);
+                int res = calculate(queue);
+                result.result = res;
+
+                sw1.Write(k + "." + result.infixFormula + "=\r\n");
+                sw2.Write(k++ + "." + result.getResult() + "\r\n");
+            }
+            sw1.Close();
+            sw2.Close();
         }
 
         /// <summary>
