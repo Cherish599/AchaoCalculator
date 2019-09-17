@@ -20,11 +20,14 @@ namespace XUnitTestProject1
             queue.Enqueue("2");
             queue.Enqueue("*");
             queue.Enqueue("3");
-            sb.Append("1+2*3");
-            Calculator.Calculator.Result result = new Calculator.Calculator.Result(sb, queue);
+            queue.Enqueue("+");
+            queue.Enqueue("4");
+            queue.Enqueue("/");
+            queue.Enqueue("2");
+            Result result = new Result(sb, queue);
             Queue<string> postfixStack = Calculator.Calculator.changeToPostfix(result.FormulaQueue);
             result.setResult(Calculator.Calculator.calculate(postfixStack));
-            Assert.Equal(7, result.getResult());
+            Assert.Equal(9, result.getResult());
         }
     }
 }
