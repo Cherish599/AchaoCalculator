@@ -35,6 +35,7 @@ namespace AchaoCalculate
                 i++;
                 st = str.Replace("/", "÷") + "=" + end.ToString();
                 Console.WriteLine(st);
+
                 StreamWriter streamWriter = new StreamWriter("test.txt", true);
                 streamWriter.WriteLine(st);
                 streamWriter.Close();
