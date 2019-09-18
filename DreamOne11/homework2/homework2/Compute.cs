@@ -13,7 +13,7 @@ namespace homework2
         {
             DataTable dt = new DataTable();
             object result=dt.Compute(formula, null);
-            while(result.ToString().Contains('.')||result.ToString().Contains('-'))
+            while(result.ToString().Contains('.')|| result.ToString().Contains('-'))
             {
                 formula = Equation.creatEquation();
                 result = dt.Compute(formula, null);
