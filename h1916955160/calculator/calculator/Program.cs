@@ -152,9 +152,10 @@ namespace calculator
                         str = str + b[q].ToString()+a[q+1].ToString();
                         Console.Write("{0}{1}", b[q],a[q+1]);
                     }
-                    str = str + cl_tor.calculate2().ToString();
+                    str = str + "="+cl_tor.calculate2().ToString();
                    Console.WriteLine("={0}", cl_tor.calculate2());
                     i++;
+
                     str1.Add(str);
                 }
                
