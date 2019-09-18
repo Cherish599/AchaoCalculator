@@ -22,7 +22,7 @@ namespace Calculator
         /// <summary>
         /// 表达式个数（调用multipleFormulaGenerator() 和 additionAndSubtractionFormulaGenerator() 的次数） 1~n
         /// </summary>
-        private static int maxNumCount = 3;
+        private static int maxNumCount = 10;
         private static Random random = new Random();
         private static Random random2 = new Random(random.Next(1000) + 1000);
 
@@ -58,6 +58,11 @@ namespace Calculator
             printToFile();
         }
 
+
+        /// <summary>
+        /// 将题目和答案打印到文件
+        /// 默认目录 E:\\
+        /// </summary>
         public static void printToFile()
         {
             int i = 1000, k = 1;
@@ -251,10 +256,16 @@ namespace Calculator
                 {
                     arr[size++] = i;
                     arr[size++] = num / i;
-                }
+                } 
             }
-            int r = random2.Next(size);
-            return arr[r];
+            //int r = random2.Next(size);
+            if (size == 2)
+            {
+                return arr[random2.Next(2)];
+            }
+            else {
+                return arr[2+random2.Next(size-2)];
+            }
         }
 
         /// <summary>
