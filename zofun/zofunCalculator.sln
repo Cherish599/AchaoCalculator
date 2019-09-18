@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2003
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "zofunCalculator", "zofunCalculator\zofunCalculator.csproj", "{5D365E57-CB99-4689-A0D8-04B7ACFBC83D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "zofunCalculatorTests", "zofunCalculatorTests\zofunCalculatorTests.csproj", "{2938ADDC-90D3-4C79-B62A-8383B9E44DCB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5D365E57-CB99-4689-A0D8-04B7ACFBC83D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D365E57-CB99-4689-A0D8-04B7ACFBC83D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D365E57-CB99-4689-A0D8-04B7ACFBC83D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D365E57-CB99-4689-A0D8-04B7ACFBC83D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2938ADDC-90D3-4C79-B62A-8383B9E44DCB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2938ADDC-90D3-4C79-B62A-8383B9E44DCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2938ADDC-90D3-4C79-B62A-8383B9E44DCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2938ADDC-90D3-4C79-B62A-8383B9E44DCB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {455867E9-DD8E-49B4-BE75-5C92B8DC8203}
+	EndGlobalSection
+EndGlobal
