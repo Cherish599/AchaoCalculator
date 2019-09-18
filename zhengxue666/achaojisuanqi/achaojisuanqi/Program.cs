@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace ConsoleApp11
+namespace achaojisuanqi
 {
     public class Program
     {
