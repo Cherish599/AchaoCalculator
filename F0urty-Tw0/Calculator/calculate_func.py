@@ -47,4 +47,4 @@ def calculate(expression, isFirst=True):
     if isFirst:
         return calculate(expression, False)
     elif int(expression[0]) == expression[0]:
-        return expression[0]  # 返回结果
+        return int(expression[0])  # 返回结果

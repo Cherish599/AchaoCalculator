@@ -54,10 +54,12 @@ def form_display(form_list):  # 将生成的表达式打印
             if form_list[i] in op:
                 form_list[i] = op_dict[form_list[i]]  # 通过op_dict字典将原有表达式中的乘除运算符替换为"X"与"÷"
         form_list.append("=")
-        form_list.append(result)
         form_list = "".join(str(i) for i in form_list)  # 将form_list列表中的元素拼接为字符串输出
-        save_to_file('subject.txt', form_list)
         print (form_list)
+        #form_list.append(result)
+        #form_list = "".join(str(i) for i in form_list)  # 将form_list列表中的元素拼接为字符串输出
+        save_to_file('subject.txt', form_list+str(result))
+
     else:  # 若表达式计算结果不为整数则不打印任何数据
         form_list = new_form()
         form_display(form_list)
