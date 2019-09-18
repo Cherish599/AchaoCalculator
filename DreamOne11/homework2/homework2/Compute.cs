@@ -7,7 +7,7 @@ using System.Data;
 
 namespace homework2
 {
-    class Compute
+    public class Compute
     {
         public static string compute(string formula)
         {

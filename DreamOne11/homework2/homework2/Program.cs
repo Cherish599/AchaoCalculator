@@ -20,7 +20,6 @@ namespace homework2
                 finallResult = Equation.creatEquation();
                 WriteToFile.save(Compute.compute(finallResult));
                 Console.WriteLine(Compute.compute(finallResult));
-                
                 Thread.Sleep(100);
             }
         }
