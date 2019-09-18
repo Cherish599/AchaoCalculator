@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace ConsoleApplication1
 {
 
-    class Symbol
+    public class Symbol
     {
         public static string k, o, l, num, num1, num2, num3, str;
         public string GetSymbol()
@@ -69,7 +69,7 @@ namespace ConsoleApplication1
 
     class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
 
             int i = 0, choose;
@@ -102,8 +102,7 @@ namespace ConsoleApplication1
                 {
                     Console.WriteLine(Symbol.str);
                     r1 = Symbol.str.Replace('/', '÷');
-                    Symbol.str = r1.Replace('*', '×');
-                    StreamWriter sw = new StreamWriter("d:/example.txt", true);
+                    StreamWriter sw = new StreamWriter("D:\\AchaoCalculator\\Luo-Star\\example.txt", true);
                     sw.WriteLine(Symbol.str);
                     sw.Close();
                 }
