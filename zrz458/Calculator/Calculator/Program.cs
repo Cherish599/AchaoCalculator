@@ -55,7 +55,9 @@ namespace Calculator
             //int res = calculate(postfixStack);
             //Console.WriteLine("result:" + res);
             //Console.ReadLine();
-            printToFile();
+            Console.Write("请输入要生成的表达式个数:");
+            int count = int.Parse(Console.ReadLine());
+            printToFile(count);
         }
 
 
@@ -63,9 +65,9 @@ namespace Calculator
         /// 将题目和答案打印到文件
         /// 默认目录 E:\\
         /// </summary>
-        public static void printToFile()
+        public static void printToFile(int count)
         {
-            int i = 1000, k = 1;
+            int i = count, k = 1;
             string pathProblem = "E:\\Problem.txt", pathAnswer = "E:\\Answer.txt";
             FileStream f1 = new FileStream(pathProblem, FileMode.Create, FileAccess.ReadWrite);
             FileStream f2 = new FileStream(pathAnswer, FileMode.Create, FileAccess.ReadWrite);
