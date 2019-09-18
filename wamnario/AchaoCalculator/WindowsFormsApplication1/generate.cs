@@ -16,7 +16,7 @@ namespace WindowsFormsApplication1
             Regex reg = new Regex(@"^[0-9]+$");
             if (!reg.Match(input).Success)
             {
-                MessageBox.Show("请输入数字!");
+                Common.newflag = false;
             }
             else
             {
@@ -166,7 +166,7 @@ namespace WindowsFormsApplication1
                         Common.list.Add(line);
                         t++;
                     }
-                }while (t <= Common.qnumber);
+                }while (t < Common.qnumber);
             }
         }
     }

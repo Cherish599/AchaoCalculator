@@ -10,5 +10,7 @@ namespace WindowsFormsApplication1
     {
         public static int qnumber;
         public static List<string> list = new List<string>();
+        public static string outputpath;
+        public static bool newflag;
     }
 }

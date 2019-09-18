@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using System.Threading;
+using System.IO;
 
 namespace WindowsFormsApplication1
 {
@@ -36,8 +37,29 @@ namespace WindowsFormsApplication1
 
         private void output_Click(object sender, EventArgs e)
         {
-            generate generate = new generate();
-            generate.generatequestion(qnum.Text);
+            if (Common.newflag == true)
+            {
+                int q = 0;
+                generate generate = new generate();
+                generate.generatequestion(qnum.Text);
+                FolderBrowserDialog fd = new FolderBrowserDialog();
+                fd.ShowDialog();
+                Common.outputpath = fd.SelectedPath;
+                StreamWriter sw = new StreamWriter(Common.outputpath + "/q.txt", false, Encoding.Default);
+                for (q = 0; q < Common.list.Count; q++)
+                {
+                    sw.WriteLine(Common.list[q]);
+                }
+                sw.Flush();
+                sw.Close();
+                if (File.Exists(Common.outputpath + "/q.txt"))
+                {
+                    MessageBox.Show("创建成功!");
+                }
+            }
+            else
+                MessageBox.Show("输入格式错误，请重新输入!");
+            Common.newflag = true;
         }
     }
 }
