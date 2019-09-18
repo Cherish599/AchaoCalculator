@@ -1,0 +1,5 @@
+因为是添加了外部的microsoft.vsa.dll文件，所以可能会出错，没错请跳过。
+下载地址：https://dl.pconline.com.cn/download/1366071.html
+部署dll流程：
+首先把dll文件放到应用程序…\bin\Debug\下；
+然后在解决方案中添加引用：右键鼠标–>添加引用–>浏览–>选择dll放置路径后点击“确定”。
