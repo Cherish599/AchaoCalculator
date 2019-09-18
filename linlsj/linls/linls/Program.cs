@@ -15,6 +15,7 @@ namespace AchaoCalculate
             object end;
             Random rd = new Random();
             DataTable dt = new DataTable();
+
             while (i < n)
             {
                 a = rd.Next(0, 100);
