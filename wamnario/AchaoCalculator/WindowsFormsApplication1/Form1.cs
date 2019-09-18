@@ -37,7 +37,12 @@ namespace WindowsFormsApplication1
 
         private void output_Click(object sender, EventArgs e)
         {
-            if (Common.newflag == true)
+            Regex reg = new Regex(@"^[0-9]+$");
+            if (!reg.Match(qnum.Text).Success)
+            {
+                MessageBox.Show("输入有错误，请重新输入!");
+            }
+            else
             {
                 int q = 0;
                 generate generate = new generate();
@@ -57,9 +62,6 @@ namespace WindowsFormsApplication1
                     MessageBox.Show("创建成功!");
                 }
             }
-            else
-                MessageBox.Show("输入格式错误，请重新输入!");
-            Common.newflag = true;
         }
     }
 }
