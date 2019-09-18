@@ -39,13 +39,13 @@ string Calculator::MakeFormula() {//创建公式
 string Calculator::Solve(string formula) { // 解决公式：方法：将公式转换为后缀式再求解
 	vector<string> *hz = new vector<string>(); //存放后缀表达式
 	stack<string> *fh = new stack<string>(); //存放符号
-	int start = 0, len = 0;//start 开始， len截取长度
+	int start = 0, len = 0;//start 开始， len当前下标
 	for (auto formulaChar : formula) {
 		if (formulaChar == '+' || formulaChar == '-' || formulaChar == '*' || formulaChar == '/')
 		{
-			hz->push_back(formula.substr(start, len - start));//ok
-			start = len + 1;//ok
-			if (fh->empty())
+			hz->push_back(formula.substr(start, len - start));//处理数字
+			start = len + 1;
+			if (fh->empty())//处理符号
 				fh->push(FH(formulaChar));
 			else {
 				if ((fh->top() == "+" || fh->top() == "-") && (formulaChar == '*' || formulaChar == '/'))
@@ -68,13 +68,13 @@ string Calculator::Solve(string formula) { // 解决公式：方法：将公式�
 		}
 		len++;
 	}
-	hz->push_back(formula.substr(start));
-	while (!fh->empty())
+	hz->push_back(formula.substr(start));//处理最后的数字
+	while (!fh->empty())//处理最后的符号
 	{
 		hz->push_back(fh->top());
 		fh->pop();
 	}
-
+	//将后缀表达式求解
 	stack<int> result;
 	int a1, a2;
 	for (auto j : *hz)
