@@ -74,6 +74,7 @@ namespace Calculator
             for ( int i = 1; i <= n; i++)
             {
                 Program.Write(Panduan(Suijiyunsuan()));//调用函数
+                Console.WriteLine(Panduan(Suijiyunsuan()));
 
             }
         }
