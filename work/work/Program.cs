@@ -12,6 +12,7 @@ namespace work
         static void Main(string[] args)
         {
             StreamWriter file = new StreamWriter(@"D:\workplace\vs\subject.txt");
+            Console.Write("请输入题目个数 ：");
             int n = int.Parse(Console.ReadLine());
             Split split = new Split();
             gets test = new gets();
@@ -41,6 +42,7 @@ namespace work
             }
             file.Flush();
             file.Close();
+            Console.ReadKey();
         }
     }
 }
