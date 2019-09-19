@@ -1,4 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
 
 namespace StepEnter
 {
@@ -13,7 +18,7 @@ namespace StepEnter
         public void CreateQuestion(int question_num)//创造question_num个四则运算
         {
             this.question_num = question_num;
-            for (int i = 0; i < this.question_num; )
+            for (int i = 0; i < this.question_num;)
             {
                 int op_cnt = rand.Next(2, 4);//从rand中选出2-3个符号，op_cnt即符号个数
                 for (int j = 0; j < op_cnt; j++)
@@ -27,7 +32,7 @@ namespace StepEnter
                 {
                     Write(op_cnt);//若满足要求，则打印表达式
                     i++;//若满足要求，继续下一个表达式
-                } 
+                }
             }
         }
         public bool Judge(int op_cnt)//判断这个表达式是否满足阿超的要求
@@ -50,7 +55,7 @@ namespace StepEnter
                     break;
                 case '-':
                     ans = num1 - num2;
-                    if (ans < 0 )//判断表达式是否会出现负数
+                    if (ans < 0)//判断表达式是否会出现负数
                         return false;
                     break;
                 case '*':
