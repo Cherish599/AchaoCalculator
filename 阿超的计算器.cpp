@@ -35,7 +35,7 @@ int number3() //number3为第三个数
 }
 
 
-int tool()
+int tool()//最后生成算式时的判断条件
 {
 	int number3;
 	number3 = rand() % 4;
@@ -65,19 +65,19 @@ bool judge(float number1)//判断除法运算中，结果是否为分数
 
 int main()
 {
-	float num1, num2, num6, n;
-	int num3, num4, num5;
-	float sum = 0, sum1 = 0;
-	char a[4] = { '+','-','*','/' };
+	float num1, num2, num6, n;//依次分别是第一个数，第二个数，第三个数和需要算式的数量
+	int num3, num4, num5;//num3是输出算式的表达结果，num4是第一个算数符号，num5是第二个算数符号
+	float sum = 0, sum1 = 0;//sum为前两个数的和，sum1为sum和第三个数的和
+	char a[4] = { '+','-','*','/' };//初始化一个数组，0,1,2,3分别代表+，-，*，/
 	
-	ofstream out("给阿超儿子的题目.txt");
+	ofstream out("给阿超儿子的题目.txt");//将输出的算式写入txt文件里，而不是在屏幕上呈现
 
 
-	srand(time(NULL));
+	srand(time(NULL));//用time头文件来实现真正的随机数
 
 	cout << "请输入你需要多少个算式：" << endl;
 
-	cin >> n;
+	cin >> n;//输入你需要的算式个数
 
 	for (float i = 0;i < n;i++)
 	{
@@ -88,8 +88,9 @@ int main()
 		num4 = sign1();
 		num5 = sign2();
 
+		//第一个算式符为‘+’时
 		if (num4 == 0) {
-			sum = num1 + num2;
+			sum = num1 + num2;//前两个数之和
 
 			do {
 				num6 = number3();
@@ -98,9 +99,9 @@ int main()
 				case 0:sum1 = sum + num6;break;
 				case 1:sum1 = sum - num6;break;
 				case 2:sum1 = sum * num6;break;
-				case 3:sum1 = sum / num6;break;
+				case 3:sum1 = sum / num6;break;//这个judge函数主要是给除法来用的，下面的if语句用法和这个类似
 				}
-			} while (!judge(sum1));
+			} while (!judge(sum1));//如果其中的除法运算为小数时，就继续生成随机数3，直到除法运算可以正常运行（即符合题目要求）
 		}
 
 		if (num4 == 1) {
@@ -114,7 +115,7 @@ int main()
 				case 2:sum1 = sum * num6;break;
 				case 3:sum1 = sum / num6;break;
 				}
-			} while (!judge(sum1));
+			} while (!judge(sum1));//同理
 		}
 
 
@@ -129,15 +130,15 @@ int main()
 				case 2:sum1 = sum * num6;break;
 				case 3:sum1 = sum / num6;break;
 				}
-			} while (!judge(sum1));
+			} while (!judge(sum1));//同理
 		}
 
 		if (num4 == 3) {
 			do {
 				num1 = number1();
 				num2 = number2();
-				sum = num1 / num2;
-			} while (!judge(sum));
+				sum = num1 / num2;//因为第一个运算符为除法，所以要把第一个和第二个数一起随机出现，直到两数相除符合题目要求
+			} while (!judge(sum));//同理
 
 			do {
 				num6 = number3();
@@ -148,9 +149,9 @@ int main()
 				case 2:sum1 = sum * num6;break;
 				case 3:sum1 = sum / num6;break;
 				}
-			} while (!judge(sum1));
+			} while (!judge(sum1));//同理
 		}
-
+		//最后把n个计算式写入到txt文件里（main函数最开始已经定义了）
 		switch (num3)
 		{
 		case 0:out << num1 << a[num4] << num2 << a[num5] << num6 << "=" << sum1 << endl;break;
@@ -163,7 +164,7 @@ int main()
 		}
 
 	}
-	out.close();
+	out.close();//关闭txt文件
 	return 0;
 }
 
