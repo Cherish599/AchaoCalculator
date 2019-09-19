@@ -132,13 +132,16 @@ int main() {
 	int n;
 	Calculator *calc = new Calculator();
 	string Problem;
+	FILE *fp;
+	fopen_s(&fp, "Calcuators.txt", "w");
 	srand((unsigned int)time(0));
 	cout << "请输入你想要几道题？" << endl;
 	cin >> n;
 	for (int i = 0; i < n; i++) {
 		Problem = calc->MakeFormula();
-		cout << Problem << endl;
 		cout << calc->Solve(Problem) << endl;
+		fprintf(fp, "%s\n", (calc->Solve(Problem)).c_str());
 	}
+	fclose(fp);
 	return 0;
 }
