@@ -27,12 +27,12 @@ namespace Calculator
             char[] ch = new char[3];
             for (int i = 0; i < n; i++)
             {
-                int cnum = b.Next(2, 4);       //运算符个数
-                num[cnum] = b.Next(101);
-                double resultTest = num[0];     //用于检查结果是否为整数
+                int h = b.Next(2, 4);       
+                num[h] = b.Next(101);
+                double resultTest = num[0];     
                 long result = num[0];
-                string subject = num[0].ToString();  //代表算式的字符串
-                for (int m = 0; m < cnum; m++)
+                string subject = num[0].ToString();  
+                for (int m = 0; m < h; m++)
                 {
                     num[m] = b.Next(101);
                     int q = b.Next(4);
@@ -76,7 +76,7 @@ namespace Calculator
 
                             break;
                     }
-                    //检验resulttest是否为整数，若不是，重新循环。
+               
                     if (resultTest != Convert.ToDouble(Convert.ToInt64(resultTest)))
                     {
                         m--;
