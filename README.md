@@ -1,2 +1,2 @@
 # AchaoCalculator
-阿超四则运算生成器
+当然是小五（Lobooi）的简单四则运算生成器
