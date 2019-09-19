@@ -27,17 +27,34 @@ namespace Calculator
         {
             for (int i = 0; i < num_g; i++) 
             {
-                int a = rdm.Next(num_f) + 1;//生成第一个数
-                int b = rdm.Next(num_f) + 1;//生成第二个数
+                int a = rdm.Next(num_f) + 1;//生成第一个数，不会小于零
+                int b = rdm.Next(num_f) + 1;//生成第二个数，不会小于零
 
                 char f = YunSuanFu();//取出运算符
 
-                Console.WriteLine("{0}、{1} {2} {3} = ", i + 1, a, f, b);
-                
-                if (f == '+') { Result[i] = a + b; }
-                else if (f == '-') { Result[i] = a - b; }
-                    else if (f == '*') { Result[i] = a * b; }
-                           else { Result[i] = Math.Round( Convert.ToDouble(a) / b,3); }
+                //Console.WriteLine("{0}、{1} {2} {3} = ", i + 1, a, f, b);修改前的语句
+
+                if (f == '+') 
+                { 
+                    Console.WriteLine("{0}、{1} {2} {3} = ", i + 1, a, f, b); 
+                    Result[i] = a + b; 
+                }
+                else if (f == '-') 
+                { 
+                    if(a<b) {a=a+b;b=a-b;a=a-b; } //交换a-b
+                    Console.WriteLine("{0}、{1} {2} {3} = ", i + 1, a, f, b);
+                    Result[i] = a - b; 
+                }
+                    else if (f == '*')
+                    { 
+                        Console.WriteLine("{0}、{1} {2} {3} = ", i + 1, a, f, b); 
+                        Result[i] = a * b; 
+                    }
+                           else
+                            { 
+                                Console.WriteLine("{0}、{1} {2} {3} = ", i + 1, a, f, b); 
+                                Result[i] = Math.Round(Convert.ToDouble(a) / b, 3); 
+                            }
 
 
             }
