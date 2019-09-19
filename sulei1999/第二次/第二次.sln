@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "第二次", "第二次\第二次.vcxproj", "{847CD909-7B4C-407D-95FB-9D51BABBECAF}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Caculate", "Caculate\Caculate.vcxproj", "{5BB23508-2D2C-4E9F-8D3C-32C8D18978F1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -13,6 +15,10 @@ Global
 		{847CD909-7B4C-407D-95FB-9D51BABBECAF}.Debug|Win32.Build.0 = Debug|Win32
 		{847CD909-7B4C-407D-95FB-9D51BABBECAF}.Release|Win32.ActiveCfg = Release|Win32
 		{847CD909-7B4C-407D-95FB-9D51BABBECAF}.Release|Win32.Build.0 = Release|Win32
+		{5BB23508-2D2C-4E9F-8D3C-32C8D18978F1}.Debug|Win32.ActiveCfg = Debug|Win32
+		{5BB23508-2D2C-4E9F-8D3C-32C8D18978F1}.Debug|Win32.Build.0 = Debug|Win32
+		{5BB23508-2D2C-4E9F-8D3C-32C8D18978F1}.Release|Win32.ActiveCfg = Release|Win32
+		{5BB23508-2D2C-4E9F-8D3C-32C8D18978F1}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
