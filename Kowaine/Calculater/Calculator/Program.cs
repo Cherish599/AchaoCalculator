@@ -12,8 +12,9 @@ namespace Calculator
     {
         static void Main(string[] args)
         {
-            Console.Write("Please input the number of problems: ");
-            int n = int.Parse(Console.ReadLine());
+            //Console.Write("Please input the number of problems: ");
+            //int n = int.Parse(Console.ReadLine());
+            int n = 1000000;
             string[] problems = new string[n];
             for (int i = 0; i < n; ++i)
             {
@@ -332,7 +333,7 @@ namespace Calculator
     /// </summary>
     public class OperatorFactory
     {
-        private Random random = new Random();
+        private static Random random = new Random();
 
         /// <summary>
         /// 生成一个随机的操作符类
@@ -362,7 +363,7 @@ namespace Calculator
     /// </summary>
     public class NumberFactory
     {
-        private Random random = new Random();
+        private static Random random = new Random();
 
 
         public int randNumber(int minNum, int maxNum)
