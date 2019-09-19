@@ -6,7 +6,8 @@ using System.Text;
 namespace Calculator {
     public class Program {
         public static void Main(string[] args) {
-            int n = Convert.ToInt32(Console.ReadLine());
+            //int n = Convert.ToInt32(Console.ReadLine());
+            int n = 1000000;//进行一百万次运算
             int operatorNum;
             int i, j;
             double result;
@@ -16,7 +17,7 @@ namespace Calculator {
             for (i = 0; i < n; i++) {
                 StringBuilder sb = new StringBuilder();
                 Random rd = new Random(Guid.NewGuid().GetHashCode());
-                operatorNum = rd.Next(2, 4);
+                operatorNum = rd.Next(2, 4);//运算符个数
 
                 for (j = 0; j < operatorNum; j++) {
                     sb.Append(rd.Next(0, 101));
