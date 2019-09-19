@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Data;
+using System.IO;
 
 public class Calculator
 {
@@ -40,6 +41,8 @@ public class Calculator
 
     public static void Main(string[] args)
     {
+        StreamWriter streamWriter = new StreamWriter(@"G:\000_xiaxiaoshux____大学各学期的文件\大三_上学期\系统分析与设计作业\AchaoCalculator\MyCalculator\MyCalculator\bin\Debug\test.txt", true);
+        List<string> list = new List<string>();
         Console.Write("请输入想要生成的个数：");
         int n = int.Parse(Console.ReadLine());
         for (int i = 0; i < n; i++)
@@ -50,7 +53,14 @@ public class Calculator
             {
                 i--; continue;
             }
+            list.Add(question + "=" + answer);
             Console.WriteLine(question + "=" + answer);
+           
+        }
+        Console.WriteLine(string.Join("", list.ToArray()));
+        foreach(string s in list)
+        {
+            streamWriter.WriteLine(s);
         }
         Console.ReadLine();
     }
