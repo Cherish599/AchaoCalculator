@@ -12,7 +12,7 @@ namespace Calculator
 {
     public class Program
     {
-        public static string Suijiyunsuan()//产生随机运算式
+        public static string Random_opration()//产生随机运算式
         {
             Random random = new Random();
             string result = null;
@@ -31,7 +31,7 @@ namespace Calculator
             }
             return result;
         }
-        public static string Panduan(string fml)//判断结果是否有小数或负数
+        public static string Exclude(string fml)//判断结果是否有小数或负数
         {
             DataTable data = new DataTable();//生成data表
             object a = null;
@@ -39,7 +39,7 @@ namespace Calculator
 
             while (a.ToString().Contains(".") || a.ToString().Contains("/0"))
             {
-                fml = Suijiyunsuan();
+                fml = Random_opration();
                 a = data.Compute(fml, "");
             }
 
@@ -73,8 +73,8 @@ namespace Calculator
         n = int.Parse(Console.ReadLine());
             for ( int i = 1; i <= n; i++)
             {
-                Program.Write(Panduan(Suijiyunsuan()));//调用函数
-                Console.WriteLine(Panduan(Suijiyunsuan()));
+                Program.Write(Exclude(Random_opration()));//调用函数
+                Console.WriteLine(Exclude(Random_opration()));
 
             }
         }

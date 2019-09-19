@@ -14,7 +14,7 @@ namespace Calculator.Tests
         [TestMethod()]
         public void SuijiyunsuanTest()
         {
-            string a=Program.Suijiyunsuan();
+            string a=Program.Random_opration();
             Assert.IsNotNull(a);//判断是否产生了随机式结果
         }
     }
