@@ -10,7 +10,7 @@ namespace FourOperation
     {
         int num_1;
         int num_2;
-        double[] result;
+        public double[] result;//创建result数组对答案进行储存
         Random radm = new Random();
 
         public ConstructOperation(int num_1, int num_2)
@@ -33,7 +33,7 @@ namespace FourOperation
         {
             for (int i = 0; i < num_1; i++)
             {
-                int a= radm.Next(num_2)+1;
+                int a= radm.Next(num_2)+1;//输入的num_2作为随机数的范围限制
                 int b= radm.Next(num_2)+1;
                 char f = OperationSymbol();
                 if (f == '+')
