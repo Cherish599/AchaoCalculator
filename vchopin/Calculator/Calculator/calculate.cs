@@ -116,7 +116,7 @@ namespace Calculator
                     if (linet.Op1 == '-')//判断相减不是负数
                     {
 
-                        if (linet.Op3 == '-')
+                        if (linet.Op3 == '-')//判断两边是减号情况
                         {
                             int tempSum = 0;
                             do
@@ -137,12 +137,12 @@ namespace Calculator
                         {
                             int tempSum = 0;
 
-                            if (linet.Op2 == '+')
+                            if (linet.Op2 == '+')//第二个是加号就判断第二个数就行
                             {
                                 while (linet.Num2 >= linet.Num1)
                                     linet.Num2 = random.RandomNum();
                             }
-                            if (linet.Op2 == '×' || linet.Op2=='÷')
+                            if (linet.Op2 == '×' || linet.Op2=='÷')//不是加号 ，求出结果
                             {
                                 tempSum = choiceCal(linet.Op2, linet.Num2, linet.Num3);
 
@@ -151,7 +151,7 @@ namespace Calculator
     
                                     tempSum = choiceCal(linet.Op3, tempSum, linet.Num4);
 
-                                    while (tempSum > linet.Num1)
+                                    while (tempSum > linet.Num1)//重新分配值
                                     {
                                         linet.Num2 = random.RandomNum(1, linet.Num1 / 8+1);
                                         linet.Num3 = random.RandomNum(1, linet.Num1 / 8+1);
@@ -175,7 +175,7 @@ namespace Calculator
                                         
                                     }
                                 }
-                                else
+                                else//加号情况
                                 {
 
                                     while (tempSum > linet.Num1 + linet.Num4)
@@ -194,6 +194,7 @@ namespace Calculator
                     }
                     if (linet.Op2 == '-')
                     {
+                        //直接判断减号两边的情况
                         int tempSum1 = 0;
                         int tempSum2 = 0;
 
@@ -221,7 +222,7 @@ namespace Calculator
                     }
                     if (linet.Op3 == '-')
                     {
-
+                        //判断前面的比最后一个数大
                         int tempSum = 0;
                         tempSum = choiceCal(linet.Op1, linet.Num1, linet.Num2);
                         tempSum = choiceCal(linet.Op2, tempSum, linet.Num3);
@@ -245,7 +246,14 @@ namespace Calculator
             }
         }
 
-
+        /*
+        * Comments : 混合四则运算规则
+        * Param char op : 操作符号
+        * Param int num1 : 第一个操作数
+        * Param int num2 : 第二个操作数
+        * Author : vchopin
+        * @Return int
+        */
         private int choiceCal(char op, int num1, int num2)
         {
             int tempSum = 0;
@@ -259,6 +267,13 @@ namespace Calculator
             return tempSum;
         }
 
+        /*
+       * Comments : 能否除尽
+       * Param int num1 : 被除数
+       * Param int num2 : 除数
+       * Author : vchopin
+       * @Return void
+       */
         private void JudgeDiv(int num1,ref int num2)
         {
 
@@ -268,6 +283,17 @@ namespace Calculator
             }
         }
 
+        /*
+       * Comments : 是否为负数
+       * Param char op1 : 操作符号
+       * Param int num1 : 第一个操作数
+       * Param int num2 : 第二个操作数
+       * Param int num2 : 第三个操作数
+       * Param char op1 : 操作符号
+       * Param bool choice : 选择是大于还是小于
+       * Author : vchopin
+       * @Return int
+       */
         private void JudggSub(int num1, ref int num2, ref int num3, char op1,bool choice)
         {
             int tempSum = 0;
