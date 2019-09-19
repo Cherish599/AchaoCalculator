@@ -1,0 +1,83 @@
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            DataTable table = new DataTable();
+
+            int n;
+            int n1 = 0;
+            int seed = Guid.NewGuid().GetHashCode();
+            Random rd = new Random(seed);
+
+
+
+            string[] signal = { "+", "-", "*", "/" };
+
+
+
+            Console.WriteLine("请输入你想要出的题目数量:");
+            n = int.Parse(Console.ReadLine());
+            for (int i = 0; i < n; i++)
+            {
+
+                int num = rd.Next(3, 5);
+                int index = 0;
+                string str = "";
+                string[] str1 = new string[10000];
+                for (int j = 0; j < num + num - 1; j++)
+                {
+                    int a = rd.Next(1, 11);
+                    int num1 = rd.Next(0, 4);
+                    if (index % 2 == 0)
+                    {
+
+                        str += a.ToString();
+
+
+                    }
+                    if (index % 2 != 0)
+                    {
+
+                        str += signal[num1];
+                    }
+                    index++;
+
+
+                }
+                string value = (table.Compute(str, "")).ToString();
+                if (double.Parse(value) - (int)(double.Parse(value)) != 0)
+                {
+                    i--;
+                }
+                else
+                {
+                    str += "=" + value + "\r\n";
+                    Console.WriteLine(str);
+
+
+                    File.AppendAllText(@"D:/四则运算.txt", str);
+
+
+
+
+                }
+
+
+
+            }
+            Console.ReadKey();
+        }
+
+
+    }
+}
