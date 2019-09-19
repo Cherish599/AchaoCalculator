@@ -73,14 +73,16 @@ namespace Calculator
                 }
             }
             // 确保运算完全完成
-            while (opStack.Count != 0)
+            Stack restOps = new Stack(opStack);
+            Stack restNums = new Stack(numStack);
+            while (restOps.Count != 0)
             {
-                int x2 = (int)numStack.Pop();
-                int x1 = (int)numStack.Pop();
-                numStack.Push(((Operator)opStack.Pop()).doCal(x1, x2));
+                int x1 = (int)restNums.Pop();
+                int x2 = (int)restNums.Pop();
+                restNums.Push(((Operator)restOps.Pop()).doCal(x1, x2));
             }
 
-            return (int)numStack.Pop();
+            return (int)restNums.Pop();
         }
 
         /// <summary>

@@ -26,9 +26,23 @@ namespace Calculator.Tests
             testNums1.Push(3);
             testNums1.Push(2);
             testNums1.Push(4);
-            int expected = 18;
-            int actual = Program.Calculate(testOps1, testNums1);
-            Assert.AreEqual(expected, actual);
+            int expected1 = 18;
+            int actual1 = Program.Calculate(testOps1, testNums1);
+            Assert.AreEqual(expected1, actual1);
+
+            //80-76/4-55=6
+            Stack testOps2 = new Stack();
+            Stack testNums2 = new Stack();
+            testOps2.Push(new Sub());
+            testOps2.Push(new Div());
+            testOps2.Push(new Sub());
+            testNums2.Push(55);
+            testNums2.Push(4);
+            testNums2.Push(76);
+            testNums2.Push(80);
+            int expected2 = 6;
+            int actual2 = Program.Calculate(testOps2, testNums2);
+            Assert.AreEqual(expected2, actual2);
         }
 
         [TestMethod()]
