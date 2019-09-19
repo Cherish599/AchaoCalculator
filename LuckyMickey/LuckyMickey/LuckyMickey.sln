@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.202
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LuckyMickey", "LuckyMickey\LuckyMickey.csproj", "{173ECF3D-2296-4364-BD16-EFB3D3D3B202}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LuckyMickey单元测试", "LuckyMickey单元测试\LuckyMickey单元测试.csproj", "{E6924C72-6B69-487E-ACD8-BE86B6EFB16E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{173ECF3D-2296-4364-BD16-EFB3D3D3B202}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{173ECF3D-2296-4364-BD16-EFB3D3D3B202}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{173ECF3D-2296-4364-BD16-EFB3D3D3B202}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{173ECF3D-2296-4364-BD16-EFB3D3D3B202}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6924C72-6B69-487E-ACD8-BE86B6EFB16E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6924C72-6B69-487E-ACD8-BE86B6EFB16E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6924C72-6B69-487E-ACD8-BE86B6EFB16E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6924C72-6B69-487E-ACD8-BE86B6EFB16E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {83C0FC67-573D-40D8-83DD-079CD43C65A3}
+	EndGlobalSection
+EndGlobal
