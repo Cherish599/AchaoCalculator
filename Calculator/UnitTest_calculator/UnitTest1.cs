@@ -8,35 +8,20 @@ namespace UnitTest_calculator
     public class UnitTest1
     {
         [TestMethod]
-        public void Testadd()    //加法测试
+        public void Testcalculate()    //计算测试
         {
-            int a = 5, b = 6;
-            int expact = Program.add(a, b);  
-            Assert.AreEqual(expact , 11);
-
+            string s = "2+6*9-1";       //实际值为55
+            string expact = "55";
+            string y=Program.calculate(s);
+            Assert.AreEqual(expact,y);      //故意测试不成功，方便后面回归测试
         }
 
         [TestMethod]
-        public void Testsub()    //减法测试
+        public void Testnotnull()          //测试是否为空
         {
-            double a = 3.22,b = 1.12;
-            double expact = Program.sub(a, b);
-            Assert.AreEqual(expact,2.01);
+            string s = "2+6*9-1";       
+            string y = Program.calculate(s);
+            Assert.IsNotNull(y);      
         }
-
-        [TestMethod]
-        public void Testjudge()    //对象结果是否为false测试
-        {
-            int a = 6, b = 11;
-            Boolean expact = Program.judge(a, b);
-            Assert.IsFalse(expact);
-        }
-
-        [TestMethod]
-        public void NotNullTest()    //判断某个对象是否不为null
-        {
-            Assert.IsNotNull(null);
-        }
-
     }
 }
