@@ -12,9 +12,9 @@ namespace Calculator
     {
         static void Main(string[] args)
         {
-            //Console.Write("Please input the number of problems: ");
-            //int n = int.Parse(Console.ReadLine());
-            int n = 1000000;
+            Console.Write("Please input the number of problems: ");
+            int n = int.Parse(Console.ReadLine());
+            //int n = 10000000;
             string[] problems = new string[n];
             for (int i = 0; i < n; ++i)
             {
@@ -27,6 +27,7 @@ namespace Calculator
                     continue;
                 }
                 problems[i] = toString((Stack)(((Stack)data[0]).Clone()), (Stack)(((Stack)data[1]).Clone()), result);
+                //Console.WriteLine(problems[i]);
             }
             writeToFile(problems);
 
