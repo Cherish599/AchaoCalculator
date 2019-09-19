@@ -27,7 +27,7 @@ namespace calculator.Tests
             Assert.AreEqual(Answer, An);
         }
 
-       /* [TestMethod()]
+       [TestMethod()]
         public void OperatorTest()
         {
             int n = 1;
@@ -36,7 +36,7 @@ namespace calculator.Tests
 
             Assert.AreEqual(correctOp, op);
         }
-        */
+        
        
     }
 }
