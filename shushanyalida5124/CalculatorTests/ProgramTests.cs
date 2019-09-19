@@ -1,10 +1,4 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Calculator;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Calculator.Tests
 {
@@ -12,9 +6,14 @@ namespace Calculator.Tests
     public class ProgramTests
     {
         [TestMethod()]
-        public void GetSubjectTest()
-        {
-            Assert.IsNotNull(System.IO.File.ReadAllText(Program.path));
+        public void Get_A_SubjectTest()
+        {   
+            
+            string sTest = Program.Get_A_Subject();
+            string[] sTestArry = sTest.Split('=');
+            string sLeft = sTestArry[0];  //等式左边
+            string sRight = sTestArry[1]; //等式右边
+            Assert.IsFalse((sLeft is null) || (sRight is null));  
         }
     }
 }
