@@ -39,10 +39,10 @@ namespace Calculator
         {
             StringBuilder build = new StringBuilder();
             int c = (int)(GlobalRandom.NextDouble * 2) + 1; // 生成随机计数
-            int start = 0;
-            int number1 = (int)(GlobalRandom.NextDouble * 99) + 1; //5
-            build.Append(number1);
-            while (start <= c)
+            int s = 0;
+            int numbera = (int)(GlobalRandom.NextDouble * 99) + 1; //5
+            build.Append(numbera);
+            while (s <= c)
             {
                 int operation = (int)(GlobalRandom.NextDouble * 4); // 生成运算符
                 if (op[operation] == "/") 
@@ -56,10 +56,10 @@ namespace Calculator
                 }
                 else
                 {
-                    int number2 = (int)(GlobalRandom.NextDouble * 99) + 1;
-                    build.Append(op[operation]).Append(number2);
+                    int numbeb = (int)(GlobalRandom.NextDouble * 99) + 1;
+                    build.Append(op[operation]).Append(numbeb);
                 }
-                start++;
+                s++;
 
             }
             //Console.WriteLine(build.ToString());
@@ -124,9 +124,7 @@ namespace Calculator
             {
                 queue2.Enqueue(stack2.Pop());
             }
-
-            Stack<string> stack1 = new Stack<string>(); // 保存操作数
-            //Stack<string> stack2 = new Stack<string>(); // 保存操作符
+            Stack<string> stack1 = new Stack<string>(); 
             foreach (string symbol in queue2)
             {
                 if (!symbol.Equals("+") && !symbol.Equals("-") && !symbol.Equals("/") && !symbol.Equals("*"))
@@ -161,34 +159,30 @@ namespace Calculator
         public static Queue<string> multipleFormulaGenerator(int count)
         {
             Queue<string> queue = new Queue<string>();
-            int num = random.Next(maxNum) + 1;
-            queue.Enqueue(num.ToString());
+            int number = random.Next(maxNum) + 1;
+            queue.Enqueue(number.ToString());
             while (--count > 0)
             {
                 string option = op[2 + random.Next(2)];
                 if (string.ReferenceEquals(option, "/"))
                 {
-                    int factor = chooseRandomFactor(num);
+                    int factor = chooseRandomFactor(number);
                     queue.Enqueue(option);
                     queue.Enqueue(factor.ToString());
-                    num /= factor;
+                    number /= factor;
                 }
                 else
                 {
-                    int num2 = random.Next(maxNum) + 1;
+                    int numberc = random.Next(maxNum) + 1;
                     queue.Enqueue(option);
-                    queue.Enqueue(num2.ToString());
-                    num *= num2;
+                    queue.Enqueue(numberc.ToString());
+                    number *= numberc;
                 }
             }
             return queue;
         }
 
-        /// <summary>
-        /// 从一个数的所有因式中随机选择一个返回
-        /// </summary>
-        /// <param name="num"> 数 </param>
-        /// <returns> num 的一个因式 </returns>
+     
         private static int chooseRandomFactor(int num)
         {
             int[] arr = new int[num + 1];
