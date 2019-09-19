@@ -22,14 +22,23 @@ string Calculator::FH(char formulaChar)
 
 string Calculator::MakeFormula() {//创建公式
 	string formula = ""; //表面出现的公式
-	int count = random(1, 3); //公式长度
+
+	int count = random(1, 3); //公式长度添加  1or2 ;
 	int start = 0;//开始计数
-	int number1 = random(1, 10);//第一个数字
+	int number1 = random(1, 100);//第一个数字
 	formula += to_string(number1);
+	int temp = number1;//保存被除数
 	while (start <= count) {
 		int operation = random(0, 3);//符号
 		int number2 = random(1, 100);//第二个数字
+		if (op[operation] == "/") { 	//排除小数
+			float f = static_cast<float>(temp) / static_cast<float>(number2);
+			int a = (temp / number2);
+			if (f != (temp / number2))
+				return MakeFormula();
+		}
 		formula += op[operation] + to_string(number2);//符号+数字
+		temp = number2;
 		start++;
 	}
 	return formula;
