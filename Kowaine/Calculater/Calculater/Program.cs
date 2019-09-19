@@ -4,8 +4,7 @@ using System.IO;
 
 namespace Calculater
 {
-    
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
@@ -28,169 +27,6 @@ namespace Calculater
             
         }
 
-
-
-        /// <summary>
-        /// 操作符基类
-        /// </summary>
-        public interface Operator
-        {
-            //计算
-            int doCal(int x, int y);
-
-            string toString();
-
-            int getPriority();
-        }
-
-        public class Add : Operator
-        {
-            private int priority;
-
-            public Add()
-            {
-                priority = 0;
-            }
-
-
-            public int doCal(int x, int y)
-            {
-                return x + y;
-            }
-
-            public string toString()
-            {
-                return "+";
-            }
-
-            public int getPriority()
-            {
-                return priority;
-            }
-
-        }
-
-        public class Sub : Operator
-        {
-            private int priority;
-
-            public Sub()
-            {
-                priority = 1;
-            }
-
-
-            public int doCal(int x, int y)
-            {
-                return x - y;
-            }
-
-            public string toString()
-            {
-                return "-";
-            }
-
-            public int getPriority()
-            {
-                return priority;
-            }
-        }
-
-        public class Mul : Operator
-        {
-            private int priority;
-
-            public Mul()
-            {
-                priority = 2;
-            }
-
-
-            public int doCal(int x, int y)
-            {
-                return x * y;
-            }
-
-            public  string toString()
-            {
-                return "*";
-            }
-
-            public int getPriority()
-            {
-                return priority;
-            }
-        }
-
-        public class Div : Operator
-        {
-            private int priority;
-
-            public Div()
-            {
-                priority = 3;
-            }
-
-
-            public  int doCal(int x, int y)
-            {
-                return x / y;
-            }
-
-            public  string toString()
-            {
-                return "/";
-            }
-
-            public int getPriority()
-            {
-                return priority;
-            }
-        }
-
-        /// <summary>
-        /// 生成运算符的工厂类
-        /// </summary>
-        public class OperatorFactory
-        {
-            private Random random = new Random();
-
-            /// <summary>
-            /// 生成一个随机的操作符类
-            /// </summary>
-            /// <returns>生成的操作符类</returns>
-            public Operator randOprator()
-            {
-                int index = random.Next(0, 4);
-                switch(index)
-                {
-                    case 0:
-                        return new Add();
-                    case 1:
-                        return new Sub();
-                    case 2:
-                        return new Mul();
-                    case 3:
-                        return new Div();
-                    default:
-                        return null;
-                }
-            }
-        }
-
-        /// <summary>
-        /// 产生随机数的工厂类
-        /// </summary>
-        public class NumberFactory
-        {
-            private Random random = new Random();
-
-
-            public int randNumber(int minNum, int maxNum)
-            {
-                return random.Next(minNum, maxNum + 1);
-            }
-        }
 
         /// <summary>
         /// 计算
@@ -366,6 +202,168 @@ namespace Calculater
             }
             writer.Close();
             writer.Dispose();
+        }
+    }
+
+    /// <summary>
+    /// 操作符基类
+    /// </summary>
+    public interface Operator
+    {
+        //计算
+        int doCal(int x, int y);
+
+        string toString();
+
+        int getPriority();
+    }
+
+    public class Add : Operator
+    {
+        private int priority;
+
+        public Add()
+        {
+            priority = 0;
+        }
+
+
+        public int doCal(int x, int y)
+        {
+            return x + y;
+        }
+
+        public string toString()
+        {
+            return "+";
+        }
+
+        public int getPriority()
+        {
+            return priority;
+        }
+
+    }
+
+    public class Sub : Operator
+    {
+        private int priority;
+
+        public Sub()
+        {
+            priority = 1;
+        }
+
+
+        public int doCal(int x, int y)
+        {
+            return x - y;
+        }
+
+        public string toString()
+        {
+            return "-";
+        }
+
+        public int getPriority()
+        {
+            return priority;
+        }
+    }
+
+    public class Mul : Operator
+    {
+        private int priority;
+
+        public Mul()
+        {
+            priority = 2;
+        }
+
+
+        public int doCal(int x, int y)
+        {
+            return x * y;
+        }
+
+        public string toString()
+        {
+            return "*";
+        }
+
+        public int getPriority()
+        {
+            return priority;
+        }
+    }
+
+    public class Div : Operator
+    {
+        private int priority;
+
+        public Div()
+        {
+            priority = 3;
+        }
+
+
+        public int doCal(int x, int y)
+        {
+            return x / y;
+        }
+
+        public string toString()
+        {
+            return "/";
+        }
+
+        public int getPriority()
+        {
+            return priority;
+        }
+    }
+
+    /// <summary>
+    /// 生成运算符的工厂类
+    /// </summary>
+    public class OperatorFactory
+    {
+        private Random random = new Random();
+
+        /// <summary>
+        /// 生成一个随机的操作符类
+        /// </summary>
+        /// <returns>生成的操作符类</returns>
+        public Operator randOprator()
+        {
+            int index = random.Next(0, 4);
+            switch (index)
+            {
+                case 0:
+                    return new Add();
+                case 1:
+                    return new Sub();
+                case 2:
+                    return new Mul();
+                case 3:
+                    return new Div();
+                default:
+                    return null;
+            }
+        }
+    }
+
+    /// <summary>
+    /// 产生随机数的工厂类
+    /// </summary>
+    public class NumberFactory
+    {
+        private Random random = new Random();
+
+
+        public int randNumber(int minNum, int maxNum)
+        {
+            return random.Next(minNum, maxNum + 1);
         }
     }
 
