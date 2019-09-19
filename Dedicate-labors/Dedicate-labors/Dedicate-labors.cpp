@@ -22,7 +22,6 @@ string Calculator::FH(char formulaChar)
 
 string Calculator::MakeFormula() {//创建公式
 	string formula = ""; //表面出现的公式
-	srand((unsigned int)time(NULL));
 	int count = random(1, 3); //公式长度
 	int start = 0;//开始计数
 	int number1 = random(1, 10);//第一个数字
@@ -121,13 +120,13 @@ string Calculator::Solve(string formula) { // 解决公式：方法：将公式�
 }
 
 int main() {
+	int n;
 	Calculator *calc = new Calculator();
 	string Problem;
-	int n;
+	srand((unsigned int)time(0));
 	cout << "请输入你想要几道题？" << endl;
 	cin >> n;
-	for (int i = 0; i < n; i++)
-	{
+	for (int i = 0; i < n; i++) {
 		Problem = calc->MakeFormula();
 		cout << Problem << endl;
 		cout << calc->Solve(Problem) << endl;
