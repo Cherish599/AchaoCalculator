@@ -27,10 +27,10 @@ namespace ConsoleApp1.Tests
         public void CountTest()
         {
             string str1 = "1+50/2";
-            string str2 = "78+82+85/96";
+            string str2 = "78+82+60/3";
             string str3 = "1+57*2";
             int ans1 = 26;
-            int ans2 = 40;
+            int ans2 = 180;
             int ans3 = 115;
             Assert.AreEqual(Program.Count(str1),ans1);
             Assert.AreEqual(Program.Count(str2), ans2);
