@@ -10,7 +10,10 @@ namespace Calculator.Tests
         [TestMethod()]
         public void OptionTest()
         {
-            Assert.Fail();
+            choicemath cho = new choicemath();
+            int test = cho.Option(1, "+", 2);
+            Assert.AreEqual(test , 3);
+           
         }
     }
 }

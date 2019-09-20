@@ -14,7 +14,8 @@ namespace Calculator.Tests
         [TestMethod()]
         public void randSymbolTest()
         {
-            Assert.Fail();
+            symbol sym = new symbol();
+            Assert.AreEqual(sym.randSymbol(2), "-");
         }
     }
 }
