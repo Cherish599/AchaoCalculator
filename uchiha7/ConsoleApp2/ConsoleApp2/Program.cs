@@ -1,12 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.IO;
+using System.Linq;
+using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 
-namespace ConsoleApp1
+namespace ConsoleApp2
 {
-    
-    class Program
+    public class Program
     {
         public static char[] Operator = { '+', '-', '*', '/' };   //生成运算符
 
@@ -22,7 +25,7 @@ namespace ConsoleApp1
             for (int i = 0; i < countNumber; i++)
             {
                 Result += Inspection(Generator()) + "\r\n";               //生成四则运算
-                Thread.Sleep(10);
+                Thread.Sleep(100);
             }
 
             Console.WriteLine(Result);
@@ -37,23 +40,22 @@ namespace ConsoleApp1
             {
                 Console.WriteLine("Error Write");
             }
-
         }
-        
+
         public static string Generator()               //生成器
         {
 
             string result = null;
             Random random = new Random();
 
-            int Number = (int)random.Next(0, 101);
-            int op_count = (int)random.Next(2, 4);
+            int Number = random.Next(0, 101);
+            int op_count = random.Next(2, 4);
             result += Number;
 
             for (int i = 0; i < random.Next(2, 4); i++)
             {
-                Number = (int)random.Next(0, 101);
-                op_count = (int)random.Next(0, 4);
+                Number = random.Next(0, 101);
+                op_count = random.Next(0, 4);
                 result = result + Operator[op_count] + Number;
             }
 
@@ -74,5 +76,4 @@ namespace ConsoleApp1
         }
 
     }
-
 }
