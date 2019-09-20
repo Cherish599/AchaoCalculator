@@ -1,0 +1,7 @@
+C:\Users\MagicBook\Desktop\zhangxuCaculator\zhangxuCaculator\bin\Debug\zhangxuCaculator.exe.config
+C:\Users\MagicBook\Desktop\zhangxuCaculator\zhangxuCaculator\bin\Debug\zhangxuCaculator.exe
+C:\Users\MagicBook\Desktop\zhangxuCaculator\zhangxuCaculator\bin\Debug\zhangxuCaculator.pdb
+C:\Users\MagicBook\Desktop\zhangxuCaculator\zhangxuCaculator\obj\Debug\zhangxuCaculator.csprojAssemblyReference.cache
+C:\Users\MagicBook\Desktop\zhangxuCaculator\zhangxuCaculator\obj\Debug\zhangxuCaculator.csproj.CoreCompileInputs.cache
+C:\Users\MagicBook\Desktop\zhangxuCaculator\zhangxuCaculator\obj\Debug\zhangxuCaculator.exe
+C:\Users\MagicBook\Desktop\zhangxuCaculator\zhangxuCaculator\obj\Debug\zhangxuCaculator.pdb
