@@ -2,7 +2,7 @@
 #include<iostream>
 #include<stdlib.h>
 using namespace std;
-int main()
+void main()
 {
 
 
@@ -60,6 +60,7 @@ int main()
 			}
 			num4 = num1 + num2 / num5;
 			cout << num1 << "+" << num2 << "/" << num5 << "=" << num4 << endl;
+			m = m + 1;
 		}
 		else if (num3 == 4)
 		{
@@ -101,6 +102,7 @@ int main()
 			}
 			num4 = num1 - num2 / num5;
 			cout << num1 << "-" << num2 << "/" << num5 << "=" << num4 << endl;
+			m = m + 1;
 		}
 		else if (num3 == 8)
 		{
@@ -142,6 +144,7 @@ int main()
 			}
 			num4 = num1 * num2 / num5;
 			cout << num1 << "*" << num2 << "/" << num5 << "=" << num4 << endl;
+			m = m + 1;
 		}
 		else if (num3 == 12 && num1%num2 == 0)
 		{
@@ -165,6 +168,7 @@ int main()
 			}
 			num4 = num1 / num2 + num5;
 			cout << num1 << "/" << num2 << "+" << num5 << "=" << num4 << endl;
+			m = m + 1;
 		}
 		else if (num3 == 13 && num1%num2 == 0)
 		{
@@ -188,6 +192,7 @@ int main()
 			}
 			num4 = num1 / num2 - num5;
 			cout << num1 << "/" << num2 << "-" << num5 << "=" << num4 << endl;
+			m = m + 1;
 		}
 		else if (num3 == 14 && num1%num2 == 0)
 		{
@@ -211,6 +216,7 @@ int main()
 			}
 			num4 = num1 / num2 * num5;
 			cout << num1 << "/" << num2 << "*" << num5 << "=" << num4 << endl;
+			m = m + 1;
 		}
 		else if (num3 == 12 && num1%num2 == 0 && (num1%num2) % num5 == 0)
 		{
@@ -222,5 +228,5 @@ int main()
 
 
 		}
-	} while (m != n - 1);
+	} while (m != n);
 }
