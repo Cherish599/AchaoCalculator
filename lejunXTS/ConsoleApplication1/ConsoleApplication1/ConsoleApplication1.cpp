@@ -9,17 +9,18 @@ using namespace std;
 
 int main()
 {
-	int n,h,s[4];//辅助变量
-	int m,a[4],b[4] = {'+','-','*','/'}, i;//i运算符个数，m题目个数，j每题数字个数
+	int n,h,j;//辅助变量
+	double s[4];
+	int m,a[4],b[4] = {'+','-','*','/'}, i;//i运算符个数，m题目个数
 	char p[3];
 	cout << "请输入需要的题目个数：" << endl;
 	cin >> m;
 	for (int e = 1; e <= m; e++)
 	{
 		i = (rand() % (3 - 2 + 1)) + 2;//运算符的个数2-3之间
-		
-		
-		for (n = 0; n <i; n++)
+
+
+		for (n = 0; n < i; n++)
 		{
 			a[n] = (rand() % (99 - 1 + 1)) + 1;//随机产生数字a[n]在0-100之间
 			h = (rand() % (3 - 0 + 1)) + 0;//随机生成运算符并排序
@@ -35,29 +36,35 @@ int main()
 			switch (p[n])
 			{
 			case '+':
-				s[n+1] = s[n] + s[n+1];
+				s[n + 1] = s[n] + s[n + 1];
 				break;
 			case '-':
-				s[n+1] = s[n] - s[n+1];
+				s[n + 1] = s[n] - s[n + 1];
 				break;
 			case '*':
-				s[n+1] = s[n] * s[n+1];
+				s[n + 1] = s[n] * s[n + 1];
 				break;
 			case '/':
-				s[n+1] = s[n] / s[n+1];
+				s[n + 1] = s[n] / s[n + 1];
 				break;
 			}
 		}
 
-		for (n = 0; n < i; n++)
-		{
-			cout << a[n];
-			cout << p[n];
-		}
-		cout << a[i] << " " <<'=' << " " << s[i] << endl;
-		cout << " ";	
+			j = (int)(s[i]);
+			if (s[i] == j)
+			{
+				for (n = 0; n < i; n++)
+				{
+					cout << a[n];
+					cout << p[n];
+				}
+				cout << a[i] << " " << '=' << " " << s[i] << endl;
+				cout << " ";
+			}
+			else
+				e = e - 1;
 	}
-	return 0;
+	
 }
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
