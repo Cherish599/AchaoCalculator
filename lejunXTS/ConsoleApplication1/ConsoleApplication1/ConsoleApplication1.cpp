@@ -9,9 +9,9 @@ using namespace std;
 
 int main()
 {
-	int n,h,j;//辅助变量
-	double s[4];
-	int m,a[4],b[4] = {'+','-','*','/'}, i;//i运算符个数，m题目个数
+	int n,h,f,j[4];//辅助变量
+	double s[4],a[4];
+	int m,b[4] = {'+','-','*','/'}, i;//i运算符个数，m题目个数
 	char p[3];
 	cout << "请输入需要的题目个数：" << endl;
 	cin >> m;
@@ -28,41 +28,39 @@ int main()
 		}
 		a[i] = (rand() % (99 - 1 + 1)) + 1;//最后一个数
 
-		for (n = 0; n <= i; n++)
-			s[n] = a[n];
 
-		for (n = 0; n < i; n++)//计算结果
+		for (n = 0; n < i; n++)//判断是否会出现小数
 		{
-			switch (p[n])
-			{
-			case '+':
-				s[n + 1] = s[n] + s[n + 1];
-				break;
-			case '-':
-				s[n + 1] = s[n] - s[n + 1];
-				break;
-			case '*':
-				s[n + 1] = s[n] * s[n + 1];
-				break;
-			case '/':
-				s[n + 1] = s[n] / s[n + 1];
-				break;
-			}
+			if (p[n] == '/')
+				s[n] = a[n] / a[n + 1];
+			else
+				s[n] = 1;
 		}
 
-			j = (int)(s[i]);
-			if (s[i] == j)
+		for (n = 0; n < i; n++)
+		{
+			j[n] = (int)(s[n]);
+		}
+
+		int op = 1;
+		for (n = 0; n < i; n++)//判断是否出现了小数
+		{
+			if (s[n] != j[n])
+				op = 0;
+		}
+
+		if (op == 1)
+		{
+			for (n = 0; n < i; n++)//输出
 			{
-				for (n = 0; n < i; n++)
-				{
-					cout << a[n];
-					cout << p[n];
-				}
-				cout << a[i] << " " << '=' << " " << s[i] << endl;
-				cout << " ";
+				cout << a[n];
+				cout << p[n];
 			}
-			else
-				e = e - 1;
+			cout << a[i] << " " << '=' << endl;
+		}
+		else
+			e = e - 1;
+		
 	}
 	
 }
