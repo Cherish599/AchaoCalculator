@@ -1,0 +1,58 @@
+#include <bits/stdc++.h>
+using namespace std;
+const int maxn=1e3+5;
+char s[maxn][maxn];
+bool judge(string a)
+{
+    if(a.size()<4)return false;
+    for(int i = 0;i < 4;++i)
+    {
+        if(a[i]>='0'&&a[i]<='9')return false;
+    }
+    return true;
+}
+int main()
+{
+    vector<string>v;
+    map<string,int>mp;
+    freopen("Test.txt","r",stdin);
+    int now=0;
+    int cntword=0;
+    int cntline=0;
+    while(gets(s[now++]));
+    for(int i = 0;i < now;++i)
+    {
+        int m=strlen(s[now]);
+        for(int j = 0;s[i][j];++j)
+        if(0<=s[i][j]&&s[i][j]<=127)cntword++;
+    }
+    string tmp;
+    for(int i = 0;i < now;++i)
+    {
+        bool ok=false;
+        for(int j = 0;s[i][j];++j)
+        {
+            if(s[i][j]!=' ')ok=true;
+            if('0'<=s[i][j]&&s[i][j]<='9'||'A'<=s[i][j]&&s[i][j]<='Z'||'a'<=s[i][j]&&s[i][j]<='z')
+            tmp+=s[i][j];
+            else{
+                if(tmp.size())
+                v.push_back(tmp);
+                tmp.clear();
+            }
+        }
+        cntline+=ok;
+    }
+    for(int i = 0;i<v.size();++i)
+    {
+        if(judge(v[i]))
+            mp[v[i]]++;
+    }
+    printf("        characters: %d\n",cntword);
+    printf("        words: %d\n",mp.size());
+    printf("        lines: %d\n",cntline);
+    map<string,int>::iterator ite;
+    for(ite=mp.begin();ite!=mp.end();++ite)
+    cout<<"        "<<ite->first<<':'<<ite->second<<endl;
+    return 0;
+}
