@@ -1,0 +1,272 @@
+#include <cstring>
+#include <iostream>
+#include <fstream>
+#include <map>
+#include <vector>
+#include <algorithm>
+#include <cstdio>
+
+using namespace std;
+class Function
+{
+public:
+	void Inputstring(char* ss)
+	{
+		FILE* stream1;
+		freopen_s(&stream1,ss, "r", stdin);
+		realine = 0;
+		while (fgets(s[realine ++], 1000, stdin))
+		{
+			int n = strlen(s[realine - 1]);
+			s[realine - 1][n - 1] = '\0';
+		}
+		fclose(stdin);
+		freopen_s(&stream1,"CON", "r", stdin);
+	};
+	int Countcharactor()
+	{
+		int cntword = 0;
+		for (int i = 0; i < realine; ++i)
+		{
+			int m = strlen(s[realine]);
+			for (int j = 0; s[i][j]; ++j)
+				if (0 <= s[i][j] && s[i][j] <= 127)cntword++;
+		}
+		return cntword;
+	}
+	int Countline()
+	{
+		int cntline = 0;
+		for (int i = 0; i < realine; ++i)
+		{
+			bool ok = false;
+			int m = strlen(s[realine]);
+			for (int j = 0; s[i][j]; ++j) {
+				if (s[i][j] != ' ')ok = true;
+			}
+			cntline += ok;
+		}
+		return cntline;
+	}
+	map<string, int> cntwords()
+	{
+		vector<string>v;
+		string tmp;
+		map<string, int>mp;
+		for (int i = 0; i < realine; ++i)
+		{
+			for (int j = 0; s[i][j]; ++j)
+			{
+				if ('0' <= s[i][j] && s[i][j] <= '9' || 'A' <= s[i][j] && s[i][j] <= 'Z' || 'a' <= s[i][j] && s[i][j] <= 'z')
+					tmp += s[i][j];
+				else {
+					if (tmp.size())
+						v.push_back(tmp);
+					tmp.clear();
+				}
+			}
+		}
+		for (int i = 0; i < v.size(); ++i)
+		{
+			if (judge(v[i]))
+				mp[v[i]]++;
+		}
+		return mp;
+	}
+	bool judge(string a)
+	{
+		if (a.size() < 4)
+			return false;
+		for (int i = 0; i < 4; ++i) {
+			if (a[i] >= '0' && a[i] <= '9')
+				return false;
+		}
+		return true;
+	}
+	map<string, int> Countwords2(int m)
+	{
+		vector<string>v;
+		string tmp;
+		map<string, int>mp;
+		for (int i = 0; i < realine; ++i)
+		{
+			for (int j = 0; s[i][j]; ++j)
+			{
+				if ('0' <= s[i][j] && s[i][j] <= '9' || 'A' <= s[i][j] && s[i][j] <= 'Z' || 'a' <= s[i][j] && s[i][j] <= 'z')
+					tmp += s[i][j];
+				else {
+					if (tmp.size() && judge(tmp))
+						v.push_back(tmp);
+					tmp.clear();
+				}
+			}
+		}
+		for (int i = 0; i < v.size() - m + 1; ++i)
+		{
+			string now;
+			for (int j = 0; j < m && i + j < v.size(); ++j)
+			{
+				now += v[i + j];
+				now += ' ';
+			}
+			mp[now]++;
+		}
+		return mp;
+	}
+private:
+	char s[1005][1005];
+	int realine;
+}func;
+
+class Mutual
+{
+	//wordcnt -m d -i [filename] -o [filename]为统计文本出现次数前d的单词，并且按字典序输出到文件,也可以输出到控制台。
+	//wordscnt -m d -i [filename] -o [filename]为为统计文本词组长度为d的词组及个数，并且输出到文件，也可以输出到控制台。
+	//cntcharacter -i [filename] 为统计文本出现字符个数
+	//cntline -i [filename] 为统计文本真实行数
+	//输入exit结束交互
+public:
+	string getinputfilename(string a)
+	{
+		int pos = a.find("-i");
+		int epos = a.find("txt");
+		epos += 3;
+		string name;
+		name = a.substr(pos + 3, epos - pos - 3 + 1);
+		return name;
+	}
+	string getoutputfilename(string a)
+	{
+		int pos = a.find("-o");
+		if (pos == -1)
+			return "-1";
+		int epos = a.find("txt");
+		epos += 3;
+		string name;
+		name = a.substr(pos + 3, epos - pos - 3 + 1);
+		return name;
+	}
+	int getsize(string a)
+	{
+		int pos = a.find("-m");
+		int j = 0;
+		return a[pos + 3] - '0';
+	}
+	bool cmp(pair<string, int> p1, pair<string, int> p2)
+	{
+		return p1.second > p2.second;
+	}
+	void fun()
+	{
+		char s[1005];
+		string a;
+		printf("please input the order:\n");
+		fgets(s,1000,stdin);
+		int n = strlen(s);
+		s[n - 1] = '\0';
+		a = s;
+		if (s == "exit")
+			return;
+		string opt;
+		for (int i = 0; i < a.size(); ++i) {
+			if (a[i] == ' ')break;
+			else opt += a[i];
+		}
+		if (opt == "cntline")
+		{
+			string tmp = getinputfilename(a);
+			char name[1005];
+			for (int i = 0; i < tmp.size(); ++i)
+				name[i] = tmp[i];
+			name[tmp.size()] = '\0';
+			func.Inputstring(name);
+			printf("ans=%d\n", func.Countline());
+		}
+		if (opt == "cntcharacter")
+		{
+			string tmp = getinputfilename(a);
+			char name[1005];
+			for (int i = 0; i < tmp.size(); ++i)
+				name[i] = tmp[i];
+			name[tmp.size()] = '\0';
+			func.Inputstring(name);
+			printf("ans=%d\n", func.Countcharactor());
+		}
+		if (opt == "wordcnt")//单词统计
+		{
+			string inname = getinputfilename(a);
+			string outname = getoutputfilename(a);
+			int size = getsize(a);
+			char iname[1005], oname[1005];
+			for (int i = 0; i < inname.size(); ++i)
+				iname[i] = inname[i];
+			iname[inname.size()] = '\0';
+			func.Inputstring(iname);
+			for (int i = 0; i < outname.size(); ++i)
+				oname[i] = outname[i];
+			oname[outname.size()] = '\0';
+			map<string, int>mp = func.cntwords();
+			vector< pair<int, string> >v;
+			map<string, int>::iterator ite;
+			for (ite = mp.begin(); ite != mp.end(); ++ite)
+				v.push_back({ ite->second,ite->first });
+			sort(v.begin(), v.end());
+			if (outname == "-1")
+			{
+				for (int i = v.size() - 1; i >= 0 && size > 0; --i, --size)
+					cout << v[i].second << "    " << v[i].first << endl;
+			}
+			else
+			{
+				FILE *stream1;
+				freopen_s(&stream1,oname, "w", stdout);
+				for (int i = v.size() - 1; i >= 0 && size >= 0; --i, --size)
+					cout << v[i].second << "    " << v[i].first << endl;
+				fclose(stdout);
+				freopen_s(&stream1,"CON", "w", stdout);
+			}
+		}
+		if (opt == "wordscnt")//词组统计
+		{
+			string inname = getinputfilename(a);
+			string outname = getoutputfilename(a);
+			int size = getsize(a);
+			char iname[1005], oname[1005];
+			for (int i = 0; i < inname.size(); ++i)
+				iname[i] = inname[i];
+			iname[inname.size()] = '\0';
+			func.Inputstring(iname);
+			for (int i = 0; i < outname.size(); ++i)
+				oname[i] = outname[i];
+			oname[outname.size()] = '\0';
+			map<string, int>mp = func.Countwords2(size);
+			vector< pair<int, string> >v;
+			map<string, int>::iterator ite;
+			for (ite = mp.begin(); ite != mp.end(); ++ite)
+				v.push_back({ ite->second,ite->first });
+			sort(v.begin(), v.end());
+			if (outname == "-1")
+			{
+				for (int i = v.size() - 1; i >= 0; --i, --size)
+					cout << v[i].second << "    " << v[i].first << endl;
+			}
+			else
+			{
+				FILE* stream;
+				freopen_s(&stream,oname, "w", stdout);
+				for (int i = v.size() - 1; i >= 0; --i, --size)
+					cout << v[i].second << "    " << v[i].first << endl;
+				fclose(stdout);
+				freopen_s(&stream,"CON", "w", stdout);
+			}
+		}
+		cout << endl << endl;
+		fun();
+	}
+};
+int main()
+{
+	Mutual a;
+	a.fun();
+	return 0;
+}
