@@ -1,0 +1,119 @@
+#include <bits/stdc++.h>
+using namespace std;
+class Function
+{
+    public:
+    void Inputstring(char *ss)
+    {
+        freopen(ss,"r",stdin);
+        realine=0;
+        while(gets(s[realine++]));
+        fclose(stdin);
+    };
+    int Countcharactor()
+    {
+        int cntword=0;
+        for(int i = 0;i < realine;++i)
+        {
+            int m=strlen(s[realine]);
+            for(int j = 0;s[i][j];++j)
+            if(0<=s[i][j]&&s[i][j]<=127)cntword++;
+        }
+        return cntword;
+    }
+    int Countline()
+    {
+        int cntline=0;
+        for(int i = 0;i < realine;++i)
+        {
+            bool ok=false;
+            int m=strlen(s[realine]);
+            for(int j = 0;s[i][j];++j){
+                if(s[i][j]!=' ')ok=true;
+            }
+            cntline+=ok;
+        }
+        return cntline;
+    }
+    map<string,int> cntwords()
+    {
+        vector<string>v;
+        string tmp;
+        map<string,int>mp;
+        for(int i = 0;i < realine;++i)
+        {
+            for(int j = 0;s[i][j];++j)
+            {
+                if('0'<=s[i][j]&&s[i][j]<='9'||'A'<=s[i][j]&&s[i][j]<='Z'||'a'<=s[i][j]&&s[i][j]<='z')
+                tmp+=s[i][j];
+                else{
+                    if(tmp.size())
+                    v.push_back(tmp);
+                    tmp.clear();
+                }
+            }
+        }
+        for(int i = 0;i<v.size();++i)
+        {
+            if(judge(v[i]))
+                mp[v[i]]++;
+        }
+        return mp;
+    }
+    bool judge(string a)
+    {
+        if(a.size()<4)
+        return false;
+        for(int i = 0;i < 4;++i){
+            if(a[i]>='0'&&a[i]<='9')
+            return false;
+        }
+        return true;
+    }
+    map<string,int> Countwords2(int m)
+    {
+        vector<string>v;
+        string tmp;
+        map<string,int>mp;
+        for(int i = 0;i < realine;++i)
+        {
+            for(int j = 0;s[i][j];++j)
+            {
+                if('0'<=s[i][j]&&s[i][j]<='9'||'A'<=s[i][j]&&s[i][j]<='Z'||'a'<=s[i][j]&&s[i][j]<='z')
+                tmp+=s[i][j];
+                else{
+                    if(tmp.size()&&judge(tmp))
+                    v.push_back(tmp);
+                    tmp.clear();
+                }
+            }
+        }
+        for(int i = 0;i < v.size()-m+1;++i)
+        {
+            string now;
+            for(int j = 0;j < m&&i+j<v.size();++j)
+            {
+                now+=v[i+j];
+                now+=' ';
+            }
+            mp[now]++;
+        }
+        return mp;
+    }
+    private:
+    char s[1005][1005];
+    int realine;
+};
+
+int main()
+{
+    // map<string,int>::iterator ite;
+    // Function a;
+    // char s[1005];
+    // scanf("%s",s);
+    // a.Inputstring(s);
+    // map<string,int>mp=a.Countwords2(3);
+    // for(ite=mp.begin();ite!=mp.end();++ite)
+    // cout<<ite->first<<' '<<ite->second<<endl;
+    return 0;
+}
