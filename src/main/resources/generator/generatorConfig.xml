@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+         <!DOCTYPE generatorConfiguration
+                 PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+                 "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <context  id="mysqlTables"   targetRuntime="MyBatis3" defaultModelType="flat">
+        <jdbcConnection  driverClass="com.mysql.cj.jdbc.Driver"
+                         connectionURL="jdbc:mysql://localhost:3306/yundichatserver?serverTimezone=UTC"  userId="root"  password="password" />
+
+        <!--指定生成的类型为java类型，避免数据库中number等类型字段 -->
+        <javaTypeResolver>
+            <property name="forceBigDecimals"  value="false" />
+        </javaTypeResolver>
+
+        <!--自动生成的实体的存放包路径 -->
+        <javaModelGenerator  targetPackage="com.ydzw.smartim.model"
+                             targetProject="src/main/java">
+            <property  name="enableSubPackages"  value="true"/>
+            <property  name="trimStrings"  value="true"/>
+        </javaModelGenerator>
+
+        <!--自动生成的*Mapper.xml文件存放路径 -->
+        <sqlMapGenerator  targetPackage="mapper"
+                          targetProject="src/main/resources">
+            <property  name="enableSubPackages"  value="true"/>
+        </sqlMapGenerator>
+
+        <!--自动生成的*Mapper.java存放路径 -->
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="com.ydzw.smartim.mapper"  targetProject="src/main/java">
+            <property  name="enableSubPackages"  value="true"/>
+        </javaClientGenerator>
+
+        <table  tableName="test"  domainObjectName="Test"
+                enableCountByExample="false"   enableUpdateByExample="false"
+                enableDeleteByExample="false"  enableSelectByExample="false"
+                selectByExampleQueryId="false">
+            <generatedKey  column="ID"  sqlStatement="selectuuid_short()"
+                           identity="false"/>
+        </table>
+
+        <table  tableName="user_infor"   domainObjectName="UserInfo">
+            <generatedKey  column="id"  sqlStatement="JDBC"   identity="false"/>
+        </table>
+
+    </context>
+
+</generatorConfiguration>
